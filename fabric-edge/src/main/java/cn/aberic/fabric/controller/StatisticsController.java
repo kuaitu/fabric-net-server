@@ -8,6 +8,7 @@ import cn.aberic.fabric.service.*;
 import cn.aberic.fabric.utils.CacheUtil;
 import cn.aberic.fabric.utils.DataUtil;
 import cn.aberic.fabric.utils.Ret;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
+@Api
 @RequestMapping("/fabric-edge/statistics")
 public class StatisticsController {
 

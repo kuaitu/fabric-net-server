@@ -16,7 +16,6 @@
 
 package cn.aberic.fabric.scheduled;
 
-import cn.aberic.fabric.dao.vo.Topology;
 import cn.aberic.fabric.service.*;
 import cn.aberic.fabric.utils.BlockUtil;
 import cn.aberic.fabric.utils.DataUtil;
@@ -80,7 +79,6 @@ public class ScheduledTasks {
     @Scheduled(fixedDelay = 60000)
     public void checkPeer() {
         log.info("===============>>>>>>>>>> check checkPeer start <<<<<<<<<<===============");
-        Topology topology = statisticsService.getTopology();
         PeerUtil.obtain().checkPeer(ordererService, peerService);
         log.info("===============>>>>>>>>>> check checkPeer end   <<<<<<<<<<===============");
     }

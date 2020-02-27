@@ -78,4 +78,6 @@ public interface OrdererMapper {
     })
     List<Orderer> listAll();
 
+    @Update("update fns_orderer set monitor_status=#{o.monitorStatus}, last_detection_time=#{o.lastDetectionTime} where id=#{o.id}")
+    void updateHostState(@Param("o") Orderer orderer);
 }

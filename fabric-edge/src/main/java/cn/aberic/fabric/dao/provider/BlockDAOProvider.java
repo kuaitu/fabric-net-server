@@ -17,7 +17,6 @@
 package cn.aberic.fabric.dao.provider;
 
 import cn.aberic.fabric.dao.entity.Block;
-import cn.aberic.fabric.dao.entity.Role;
 
 import java.text.MessageFormat;
 import java.util.List;

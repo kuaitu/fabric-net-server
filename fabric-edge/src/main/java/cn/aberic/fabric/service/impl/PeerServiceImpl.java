@@ -163,6 +163,11 @@ public class PeerServiceImpl implements PeerService {
         return peer;
     }
 
+    @Override
+    public void updateHostState(Peer peer) {
+        peerMapper.updateHostState(peer);
+    }
+
     private boolean saveFileFail(Peer peer, MultipartFile serverCrtFile, MultipartFile clientCertFile, MultipartFile clientKeyFile) {
         String peerTlsPath = String.format("%s%s%s%s%s%s%s%s",
                 env.getProperty("config.dir"),

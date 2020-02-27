@@ -51,6 +51,10 @@ public class Peer {
     private String clientKeyPath;
     @Column(name = "date",type = MySqlTypeConstant.VARCHAR,length = 14)
     private String date; // required
+    @Column(name = "monitor_status",type = MySqlTypeConstant.CHAR,length = 1, defaultValue = "0")
+    private String monitorStatus; // required
+    @Column(name = "last_detection_time",type = MySqlTypeConstant.VARCHAR,length = 20)
+    private String lastDetectionTime; // required
 
     private String orgName; // required
     private String leagueName; // optional

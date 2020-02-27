@@ -17,7 +17,6 @@
 package cn.aberic.fabric.dao.mapper;
 
 import cn.aberic.fabric.dao.entity.Role;
-import cn.aberic.fabric.dao.entity.User;
 import cn.aberic.fabric.dao.provider.RoleDAOProvider;
 import org.apache.ibatis.annotations.*;
 

@@ -74,12 +74,16 @@ public class CommonController {
 
         modelAndView.addObject("leagueCount", home.getLeagueCount());
         modelAndView.addObject("orgCount", home.getOrgCount());
+
         modelAndView.addObject("ordererCount", home.getOrdererCount());
         modelAndView.addObject("peerCount", home.getPeerCount());
+
         modelAndView.addObject("caCount", home.getCaCount());
         modelAndView.addObject("channelCount", home.getChannelCount());
+
         modelAndView.addObject("chaincodeCount", home.getChaincodeCount());
         modelAndView.addObject("appCount", home.getAppCount());
+
         modelAndView.addObject("blocks", home.getBlocks());
         //中间统计模块开始
         modelAndView.addObject("channelPercents", new JSONArray(home.getChannelPercents()).toString());

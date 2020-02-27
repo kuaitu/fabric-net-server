@@ -28,8 +28,11 @@ import lombok.Setter;
 @Getter
 public class Platform {
 
+    // 平台区块总数
     private int blockCount;
+    //平台总交易量
     private int txCount;
+    //平台区块读写集总数
     private int rwSetCount;
 
 }

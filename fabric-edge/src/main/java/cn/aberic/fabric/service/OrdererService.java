@@ -49,4 +49,6 @@ public interface OrdererService {
      List<Org> listAllOrg();
 
      Orderer resetOrderer(Orderer orderer);
+
+    void updateHostState(Orderer orderer);
 }

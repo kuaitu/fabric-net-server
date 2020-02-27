@@ -152,6 +152,11 @@ public class OrdererServiceImpl implements OrdererService {
         return orderer;
     }
 
+    @Override
+    public void updateHostState(Orderer orderer) {
+        ordererMapper.updateHostState(orderer);
+    }
+
     private boolean saveFileFail(Orderer orderer, MultipartFile serverCrtFile, MultipartFile clientCertFile, MultipartFile clientKeyFile) {
         String ordererTlsPath = String.format("%s%s%s%s%s%s%s%s",
                 env.getProperty("config.dir"),

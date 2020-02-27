@@ -16,9 +16,11 @@
 
 package cn.aberic.fabric.scheduled;
 
+import cn.aberic.fabric.dao.vo.Topology;
 import cn.aberic.fabric.service.*;
 import cn.aberic.fabric.utils.BlockUtil;
 import cn.aberic.fabric.utils.DataUtil;
+import cn.aberic.fabric.utils.PeerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -54,6 +56,8 @@ public class ScheduledTasks {
     private TraceService traceService;
     @Resource
     private BlockService blockService;
+    @Resource
+    private StatisticsService statisticsService;
 
     //fixedDelay = x 表示当前方法执行完毕x ms后，Spring scheduling会再次调用该方法
     @Scheduled(fixedDelay = 15000)
@@ -70,6 +74,15 @@ public class ScheduledTasks {
         log.info("===============>>>>>>>>>> check channel start <<<<<<<<<<===============");
         BlockUtil.obtain().checkChannel(channelService, caService, blockService, traceService, channelService.listAll());
         log.info("===============>>>>>>>>>> check channel end   <<<<<<<<<<===============");
+    }
+
+    //检查节点健康状态
+    @Scheduled(fixedDelay = 60000)
+    public void checkPeer() {
+        log.info("===============>>>>>>>>>> check checkPeer start <<<<<<<<<<===============");
+        Topology topology = statisticsService.getTopology();
+        PeerUtil.obtain().checkPeer(ordererService, peerService);
+        log.info("===============>>>>>>>>>> check checkPeer end   <<<<<<<<<<===============");
     }
 
 }

@@ -49,4 +49,6 @@ public interface PeerService {
     List<Org> getForPeerAndOrderer();
 
     Peer resetPeer(Peer peer);
+
+    void updateHostState(Peer peer);
 }

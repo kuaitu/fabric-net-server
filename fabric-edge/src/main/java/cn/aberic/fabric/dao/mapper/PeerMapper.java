@@ -85,4 +85,14 @@ public interface PeerMapper {
     })
     List<Peer> listAll();
 
+    @Update("update fns_peer set monitor_status=#{p.monitorStatus}, last_detection_time=#{p.lastDetectionTime} where id=#{p.id}")
+    void updateHostState(@Param("p") Peer peer);
+
+    @Select("select id,name,location from fns_peer where org_id=#{id}")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "orgId", column = "org_id"),
+            @Result(property = "location", column = "location")
+    })
+    List<Peer> listByOrgId(@Param("id") int id);
 }

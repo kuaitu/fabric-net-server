@@ -55,8 +55,6 @@ public class ScheduledTasks {
     private TraceService traceService;
     @Resource
     private BlockService blockService;
-    @Resource
-    private StatisticsService statisticsService;
 
     //fixedDelay = x 表示当前方法执行完毕x ms后，Spring scheduling会再次调用该方法
     @Scheduled(fixedDelay = 15000)

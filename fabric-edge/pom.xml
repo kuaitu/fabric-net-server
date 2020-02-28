@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <front.project.path>../docker_demo_web</front.project.path><!-- 自定义标签，前端路径 -->
     </properties>
 
     <repositories>
@@ -211,9 +212,42 @@
     <build>
         <plugins>
 
+            <!-- ==============================================清理文件============================================= -->
+
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/resources/screen</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${front.project.path}/dist</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>src/main/docker</directory>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
             <!-- ==============================================前端打包============================================= -->
 
-            <!--<plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
@@ -225,7 +259,7 @@
                     </dependency>
                 </dependencies>
                 <executions>
-                    &lt;!&ndash;打包前端资源&ndash;&gt;
+                    <!--打包前端资源-->
                     <execution>
                         <id>exec-npm-install</id>
                         <phase>validate</phase>
@@ -237,7 +271,7 @@
                             <arguments>
                                 <argument>install</argument>
                             </arguments>
-                            <workingDirectory>../docker_demo_web</workingDirectory>
+                            <workingDirectory>${front.project.path}</workingDirectory>
                         </configuration>
                     </execution>
 
@@ -253,7 +287,7 @@
                                 <argument>run</argument>
                                 <argument>build</argument>
                             </arguments>
-                            <workingDirectory>../docker_demo_web</workingDirectory>
+                            <workingDirectory>${front.project.path}</workingDirectory>
                             <addResourcesToClasspath></addResourcesToClasspath>
                         </configuration>
                     </execution>
@@ -264,7 +298,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
                 <executions>
-                    &lt;!&ndash;拷贝前端资源&ndash;&gt;
+                    <!--拷贝前端资源-->
                     <execution>
                         <id>copy-resources</id>
                         <phase>initialize</phase>
@@ -272,17 +306,17 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
+                            <outputDirectory>src/main/resources/screen</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>../docker_demo_web/dist</directory>
+                                    <directory>${front.project.path}/dist</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
             <!-- ==============================================后台打包============================================= -->
 

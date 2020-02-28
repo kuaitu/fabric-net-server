@@ -28,16 +28,16 @@ import java.io.IOException;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
-    String LEAGUE = "/league/*";
-    String ORG = "/org/*";
-    String ORDERER = "/orderer/*";
-    String PEER = "/peer/*";
-    String CHANNEL = "/channel/*";
-    String CHAINCODE = "/chaincode/*";
-    String APP = "/app/*";
-    String CA = "/ca/*";
-    String USER = "/user/*";
-    String INDEX = "/index";
+    public String LEAGUE = "/league/*";
+    public String ORG = "/org/*";
+    public String ORDERER = "/orderer/*";
+    public String PEER = "/peer/*";
+    public String CHANNEL = "/channel/*";
+    public String CHAINCODE = "/chaincode/*";
+    public String APP = "/app/*";
+    public String CA = "/ca/*";
+    public String USER = "/user/*";
+    public String INDEX = "/index";
 
     /** 在请求被处理之前调用 */
     @Override

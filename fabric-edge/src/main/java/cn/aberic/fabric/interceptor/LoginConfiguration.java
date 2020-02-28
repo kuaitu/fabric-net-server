@@ -17,12 +17,11 @@
 package cn.aberic.fabric.interceptor;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+// 废弃掉，使用 CorsConfig
 public class LoginConfiguration implements WebMvcConfigurer {
 
     @Override

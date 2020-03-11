@@ -19,10 +19,11 @@ package cn.aberic.fabric.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -48,11 +49,10 @@ public class MybatisTableConfig {
     private String password;
 
     @Bean
-    public PropertiesFactoryBean configProperties() throws Exception{
-        PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        propertiesFactoryBean.setLocations(resolver.getResources("classpath*:application.properties"));
-        return propertiesFactoryBean;
+    public YamlPropertiesFactoryBean configProperties(){
+        YamlPropertiesFactoryBean yamlMapFactoryBean = new YamlPropertiesFactoryBean();
+        yamlMapFactoryBean.setResources(new ClassPathResource("application.yml"));
+        return yamlMapFactoryBean;
     }
 
     @Bean

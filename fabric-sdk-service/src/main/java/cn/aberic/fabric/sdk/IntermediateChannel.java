@@ -82,9 +82,10 @@ class IntermediateChannel {
                             String.format("Missing cert file for: %s. Could not find at location: %s", org.getOrderers().get(i).getOrdererName(), ordererCert.getAbsolutePath()));
                 }
                 ordererProperties.setProperty("pemFile", ordererCert.getAbsolutePath());
-                ordererProperties.setProperty("clientCertFile", ordererUserClientCert.getAbsolutePath());
-                ordererProperties.setProperty("clientKeyFile", ordererUserClientKey.getAbsolutePath());
+                //ordererProperties.setProperty("clientCertFile", ordererUserClientCert.getAbsolutePath());
+                //ordererProperties.setProperty("clientKeyFile", ordererUserClientKey.getAbsolutePath());
             }
+            //ordererProperties.setProperty("trustServerCertificate", "true"); //testing
             ordererProperties.setProperty("hostnameOverride", org.getOrderers().get(i).getOrdererName());
             ordererProperties.setProperty("sslProvider", "openSSL");
             ordererProperties.setProperty("negotiationType", "TLS");
@@ -108,10 +109,10 @@ class IntermediateChannel {
                             String.format("Missing cert file for: %s. Could not find at location: %s", org.getPeers().get(i).getPeerName(), peerCert.getAbsolutePath()));
                 }
                 peerProperties.setProperty("pemFile", peerCert.getAbsolutePath());
-                peerProperties.setProperty("clientCertFile", peerUserClientCert.getAbsolutePath());
-                peerProperties.setProperty("clientKeyFile", peerUserClientKey.getAbsolutePath());
+                //peerProperties.setProperty("clientCertFile", peerUserClientCert.getAbsolutePath());
+                //peerProperties.setProperty("clientKeyFile", peerUserClientKey.getAbsolutePath());
             }
-            // ret.setProperty("trustServerCertificate", "true"); //testing
+            //peerProperties.setProperty("trustServerCertificate", "true"); //testing
             // environment only NOT FOR PRODUCTION!
             peerProperties.setProperty("hostnameOverride", org.getPeers().get(i).getPeerName());
             peerProperties.setProperty("sslProvider", "openSSL");
